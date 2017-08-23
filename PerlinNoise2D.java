@@ -27,30 +27,36 @@ public class PerlinNoise2D {
     }
 
     private static double noise(double x, double y){
+      System.out.format(" [x=%f, y=%f]\n", x, y);
+
     	int xi = (int) Math.floor(x) & 255;
     	int yi = (int) Math.floor(y) & 255;
-      System.out.format("[xi=%d, yi=%d]\n", xi, yi);
+      System.out.format(" [xi=%d, yi=%d]\n", xi, yi);
+
     	int g1 = p[p[xi] + yi];
     	int g2 = p[p[xi + 1] + yi];
     	int g3 = p[p[xi] + yi + 1];
     	int g4 = p[p[xi + 1] + yi + 1];
-      System.out.format("[g1=%d, g2=%d, g3=%d, g4=%d]\n", g1, g2, g3, g4);
+      System.out.format(" [g1=%d, g2=%d, g3=%d, g4=%d]\n", g1, g2, g3, g4);
 
     	double xf = x - Math.floor(x);
     	double yf = y - Math.floor(y);
-      System.out.format("[xf=%f, yf=%f]\n", xf, yf);
+      System.out.format(" [xf=%f, yf=%f]\n", xf, yf);
 
     	double d1 = grad(g1, xf, yf);
     	double d2 = grad(g2, xf - 1, yf);
     	double d3 = grad(g3, xf, yf - 1);
     	double d4 = grad(g4, xf - 1, yf - 1);
+      System.out.format(" [d1=%f, d2=%f, d3=%f, d4=%f]\n", d1, d2, d3, d4);
 
     	double u = fade(xf);
     	double v = fade(yf);
+      System.out.format(" [u=%f, v=%f]\n", u, v);
 
     	double x1Inter = lerp(u, d1, d2);
     	double x2Inter = lerp(u, d3, d4);
     	double yInter = lerp(v, x1Inter, x2Inter);
+      System.out.format(" [x1Inter=%f, x2Inter=%f, yInter=%f]\n", x1Inter, x2Inter, yInter);
 
     	return yInter;
 
