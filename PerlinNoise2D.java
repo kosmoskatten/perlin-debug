@@ -4,8 +4,8 @@ public class PerlinNoise2D {
 	//private static double time = 0;
 
 	//private static BufferedImage image = new BufferedImage(MainWindow.WIDTH, MainWindow.HEIGHT, BufferedImage.TYPE_INT_RGB);
-  static int HEIGHT=2;
-  static int WIDTH=2;
+  static int HEIGHT=5;
+  static int WIDTH=5;
 
     public static void getNoiseImage() {
     	for(int y = 0; y < HEIGHT; y++){
